@@ -1,0 +1,21 @@
+.main-frontpage {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.logo-vertical {
+  text-align: center;
+  animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+.logo-vertical img{
+  height: 320px;
+}
+
+.logo-vertical h2 {
+  font-family: "Rock Salt";
+  text-align: center;
+}

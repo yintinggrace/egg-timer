@@ -10,3 +10,8 @@ mainDom.innerHTML = `
   </div>
 `;
 
+const animElement = document.querySelector(".logo-vertical");
+
+animElement.addEventListener("animationend", () =>
+  renderStageOne(headerDom, mainDom)
+);

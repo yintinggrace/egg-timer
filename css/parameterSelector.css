@@ -19,10 +19,11 @@ nav{
     font-size: 0;
     box-shadow: 0 2px 3px 0 rgba(0, 0  , 0, .1);
     cursor: pointer;
+    font-family: var(--button-fontFamily);
 }
 
 nav a{
-    font-size: 15px;
+    font-size: var(--buttons-fontSize);
     text-transform: uppercase;
     text-decoration: none;
     color: var(--grey);
@@ -74,37 +75,52 @@ nav .start-step3, a:nth-child(3):hover~.animation{
 
 /*Main*/
 
-h1{
-    font-family: "Open Sans", sans-serif;
-    font-size: 36px;
-}
-
 .parameterSelectorMain{
- height: 90vh;
- padding: 30px;   
- text-align: center;
- color: var(--black);
+    height: 90vh;
+    padding: 30px;   
+    text-align: center;
+    color: var(--black);
 }
 
 .parameterSelectorMain h1{
-    margin-bottom: 20vh;
+    font-family: var(--heading-fontFamily);
+    font-size: var(--heading-fontSize);
+    margin-bottom: 10vh;
 }
 
 .eggSize, .eggCookingInstructions{
-    height: 30vh;
+    height: 40vh;
     position: relative;
+    font-family: var(--heading-fontFamily);
+    font-size: var(--heading-fontSizeSmall);
 }
 
-.eggSize:after{
+.parameterSelectorMain h4{
+    margin: 0;
+}
+
+.eggSize:after, .eggCookingInstructions:after{
     content: "";
     position: absolute;
     z-index: 1;
     top: 0;
     right: 0;
     background-image: linear-gradient(to right, rgba(255, 255, 255,0), rgba(246, 244, 218) 85%);
-    width: 15%;
+    width: 5%;
     height: 100%;
 }
+
+
+/*.eggSize:before{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(to left, rgba(255, 255, 255,0), rgba(246, 244, 218) 85%);
+    width: 5%;
+    height: 100%;
+}*/
 
 .eggSizeSlider, .eggCookSlider{
     height: 80%;
@@ -117,27 +133,46 @@ h1{
 
 .eggSizeSlider > div, .eggCookSlider > div{
     height: 100%;
-  
-
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
+/*Egg size images*/
+.small{
+    margin-left: 230px;
+    width: 60px;
+}
 .small img{
    height: 50%;
 }
 
+.medium{
+    width: 100px;
+}
 .medium img{
    height: 70%;
 }
 
+.large{
+    width: 100px;
+    margin-right: 80px;
+}
 .large img{
-   height: 90%
+   height: 90%;
 }
 
-.soft img, .medium img, .hard img{
-    height: 100%;
+/*Egg cooking instructions images*/
+.soft img, .eggCookSlider > .medium img, .hard img{
+    height: 90%;
+}
+
+.soft{
+    margin-left: 230px;
+}
+
+.hard{
+    margin-right: 80px;
 }
 
 
@@ -150,6 +185,8 @@ h1{
     height: 50px;
     width: 110px;
     margin-top: 4vh;
+    font-family: var(--button-fontFamily);
+    font-size: var(--buttons-fontSize);
 }
 
 .parameterSelectorMain button:hover{

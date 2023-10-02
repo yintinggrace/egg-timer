@@ -7,8 +7,16 @@
   /*--medium-orange: rgb(246, 207, 124);*/
   --dark-orange: rgb(255, 193, 73);
   --white: rgb(255, 255, 255);
-  --black: rgb(42, 42, 42);
+  --black: rgb(62, 62, 62);
   --grey: rgb(152, 152, 152);
+
+  /*Fonts*/
+  --buttons-fontSize: 16px;
+  --button-fontFamily: Poppins;
+
+  --heading-fontSize: 36px;
+  --heading-fontSizeSmall: 24px;
+  --heading-fontFamily: "Open Sans";
 }
 
 body {

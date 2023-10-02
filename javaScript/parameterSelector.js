@@ -1,20 +1,22 @@
 /*TO DO:
-    - Slider fade on sides
-    - Selector based on slide position
-    - Fonts
-    - Font size
-    - What data to send to Grace
+    - Slider fade on left side
+    - Is opens sans a good font?
     - Step 3 image
+    - White text on select on menu
+    - Scroll to medium on load
+    - Medium fade
 */
 
-let size;
-let cookingDirection;
+let parameters = {
+    size: "",
+    cookingDirection: "",
+}
 
 function renderStep1(){
+    let size = "medium";
 
     let header = document.querySelector("header");
     header.classList.add("navigationHeader");
-  
 
     header.innerHTML = `
     <nav id="navigation">
@@ -37,10 +39,15 @@ function renderStep1(){
         <h1>What size are your eggs?</h1>
         <div class="eggSize">
             <div class="eggSizeSlider">
-                <div class="small">
-                    <img src="./images/egg-size.png"></div>
-                <div class="medium selected"><img src="./images/egg-size.png"></div>
-                <div class="large"><img src="./images/egg-size.png"></div>
+                <div class="egg small">
+                    <img src="./images/egg-size.png">
+                </div>
+                <div class="egg medium selected">
+                    <img src="./images/egg-size.png">
+                </div>
+                <div class="egg large">
+                    <img src="./images/egg-size.png">
+                </div>
             </div>
             <h4>Medium</h4>
         </div>
@@ -49,41 +56,79 @@ function renderStep1(){
     `;
 
     let eggSizeSlider = main.querySelector(".eggSizeSlider");
-    //let scrollDistance = eggSizeSlider.scrollLeft;
-
     eggSizeSlider.addEventListener("scroll", sizeSelector);
+    eggSizeSlider.addEventListener("scroll", scrollHandler);
+
+    //Select egg size based on scroll position
     function sizeSelector(event){
-       // let eggSizeSlider = main.querySelector(".eggSizeSlider");
         let scrollDistance = eggSizeSlider.scrollLeft;
-        console.log(scrollDistance);
         scrollDistanceNum = Number(scrollDistance);
 
-        if(scrollDistanceNum === 0 || scrollDistanceNum < 90){
+        if(scrollDistanceNum === 0 || scrollDistanceNum < 85){
             size = "Small";
-        }else if(scrollDistanceNum >= 90){
+        }else if(scrollDistanceNum >= 85 && scrollDistance < 220){
             size = "Medium";
+        }else{
+            size = "Large";
         }
 
         main.querySelector("h4").textContent = size;
     }
 
+    //Fade egg images based on scroll position
+    function scrollHandler(){
+        var smallEgg = document.querySelector(".small");
+        var mediumEgg = document.querySelector(".medium");
+        var largeEgg = document.querySelector(".large");
 
-    //Collecting data of egg size
-    selected = main.querySelector(".selected");
-    let selectedClassName = selected.className;
-    if(selectedClassName.includes("medium")){
-        size = "medium";
-    }else if(selectedClassName.includes("small")){
-        size = "small";
-    }else if(selectedClassName.includes("large")){
-        size = "large";
+        fadeOnScrollLeft(smallEgg);
+        fadeOnScrollRight(largeEgg);
     }
-    
 
-    document.querySelector(".parameterSelectorMain button").addEventListener("click", renderStep2)
+    //Fade on left side
+    function fadeOnScrollLeft(egg){
+        let distanceToLeft = window.pageXOffset + egg.getBoundingClientRect().left;
+        let elementWidth = egg.offsetWidth;
+        let scrollLeft = document.documentElement.scrollLeft;
+        
+
+        let opacity = 1;
+        if(scrollLeft > (distanceToLeft - 400)){
+            opacity = .4 - (scrollLeft - distanceToLeft) / elementWidth;
+        }
+
+        if(opacity >= 0){
+            egg.style.opacity = opacity;
+        }
+    }
+
+    //Fade on right side
+    function fadeOnScrollRight(egg){
+        let distanceToRight = window.innerWidth - (egg.getBoundingClientRect().left + egg.offsetWidth);
+        let elementWidth = egg.offsetWidth;
+        let scrollLeft = document.documentElement.scrollLeft;
+        
+
+        let opacity = 1;
+        if(scrollLeft > (distanceToRight - 200)){
+            opacity = .4 - (scrollLeft - distanceToRight) / elementWidth;
+        }
+
+        if(opacity >= 0){
+            egg.style.opacity = opacity;
+        }
+    }
+
+    document.querySelector(".parameterSelectorMain button").addEventListener("click", saveData);
+    function saveData(){
+        parameters.size = size;
+        renderStep2();
+    }
 }
 
 function renderStep2(){
+    let cookingDirection = "medium";
+
     let header = document.querySelector("header");
     header.querySelector(".animation").classList.remove("start-home");
     header.querySelector(".animation").classList.add("start-step2");
@@ -98,9 +143,14 @@ function renderStep2(){
         <div class="eggCookingInstructions">
             <div class="eggCookSlider">
                 <div class="soft">
-                    <img src="./images/egg-soft.png"></div>
-                <div class="medium selected"><img src="./images/egg-medium.png"></div>
-                <div class="hard"><img src="./images/egg-hard.png"></div>
+                    <img src="./images/egg-soft.png">
+                </div>
+                <div class="medium selected">
+                    <img src="./images/egg-medium.png">
+                </div>
+                <div class="hard">
+                    <img src="./images/egg-hard.png">
+                </div>
             </div>
             <h4>Medium</h4>
         </div>
@@ -109,39 +159,74 @@ function renderStep2(){
 
 
     let eggCookSlider = main.querySelector(".eggCookSlider");
-    //let scrollDistance = eggSizeSlider.scrollLeft;
-
     eggCookSlider.addEventListener("scroll", cookSelector);
+    eggCookSlider.addEventListener("scroll", scrollHandler);
+
     function cookSelector(event){
-       // let eggSizeSlider = main.querySelector(".eggSizeSlider");
         let scrollDistance = eggCookSlider.scrollLeft;
         console.log(scrollDistance);
         scrollDistanceNum = Number(scrollDistance);
 
         if(scrollDistanceNum === 0 || scrollDistanceNum < 90){
-            size = "Soft";
-        }else if(scrollDistanceNum >= 90){
-            size = "Medium";
+            cookingDirection = "Soft";
+        }else if(scrollDistanceNum >= 90 && scrollDistanceNum < 250 ){
+            cookingDirection = "Medium";
+        }else{
+            cookingDirection = "Hard";
         }
 
-        main.querySelector("h4").textContent = size;
+        main.querySelector("h4").textContent = cookingDirection;
     }
 
-    
-     //Collecting data of cooking instructions
-     selected = main.querySelector(".selected");
-     let selectedClassName = selected.className;
-     if(selectedClassName.includes("medium")){
-         cookingDirection = "medium";
-     }else if(selectedClassName.includes("soft")){
-         cookingDirection = "soft";
-     }else if(selectedClassName.includes("hard")){
-         cookingDirection = "hard";
-     }
+    //Fade egg images based on scroll position
+    function scrollHandler(){
+        var softEgg = document.querySelector(".soft");
+        var mediumEgg = document.querySelector(".medium");
+        var hardEgg = document.querySelector(".hard");
 
-    document.querySelector(".parameterSelectorMain button").addEventListener("click", renderStep3)
+        fadeOnScrollLeft(softEgg);
+        fadeOnScrollRight(hardEgg);
+    }
 
+    //Fade on left side
+    function fadeOnScrollLeft(egg){
+        let distanceToLeft = window.pageXOffset + egg.getBoundingClientRect().left;
+        let elementWidth = egg.offsetWidth;
+        let scrollLeft = document.documentElement.scrollLeft;
+        
 
+        let opacity = 1;
+        if(scrollLeft > (distanceToLeft - 100)){
+            opacity = .9 - (scrollLeft - distanceToLeft) / elementWidth;
+        }
+
+        if(opacity >= 0){
+            egg.style.opacity = opacity;
+        }
+    }
+
+    //Fade on right side
+    function fadeOnScrollRight(egg){
+        let distanceToRight = window.innerWidth - (egg.getBoundingClientRect().left + egg.offsetWidth);
+        let elementWidth = egg.offsetWidth;
+        let scrollLeft = document.documentElement.scrollLeft;
+        
+
+        let opacity = 1;
+        if(scrollLeft > (distanceToRight - 100)){
+            opacity = .9 - (scrollLeft - distanceToRight) / elementWidth;
+        }
+
+        if(opacity >= 0){
+            egg.style.opacity = opacity;
+        }
+    }
+
+    document.querySelector(".parameterSelectorMain button").addEventListener("click", saveData)
+    function saveData(){
+        parameters.cookingDirection = cookingDirection;
+        renderStep3();
+    }
 }
 
 function renderStep3(){
@@ -157,41 +242,6 @@ function renderStep3(){
         <button>Ready</button>
     </div>`
 
-    let parameters = {
-        size: size,
-        cookingDirection: cookingDirection,
-    }
+    
 }
 
-
-/*
-var scrollDistance = function(callback){
-    if(!callback || typeof callback !== 'function') return;
-
-    var isScrolling, start, end, distance;
-
-    window.addEventListener('scroll', function (event){
-        if (!start) {
-			start = window.pageYOffset;
-		}
-
-        window.clearTimeout(isScrolling);
-
-        isScrolling = setTimeout(function() {
-			
-            // Calculate distance
-			end = window.pageYOffset;
-			distance = end - start;
-
-			// Run the callback
-			callback(distance, start, end);
-
-            // Reset calculations
-			start = null;
-			end = null;
-			distance = null;
-
-		}, refresh || 66);
-
-    }, false);
-}*/

@@ -11,19 +11,30 @@
   align-items: center;
 }
 
-.button-timer .button-start,
-.button-timer .button-reset {
-  margin: 5px;
+.button-start,
+.button-reset {
+    background-color: var(--dark-orange);
+    color: var(--grey);
+    border-radius: 30px;
+    border: none;
+    height: 50px;
+    width: 110px;
+    margin: 5px;
+    font-family: var(--button-fontFamily);
+    font-size: var(--buttons-fontSize);
 }
 
-.button-timer .button-start {
+.button-start {
   color: var(--white);
 }
 
-.button-timer .button-reset {
+.button-reset {
   background-color: var(--white);
   color: var(--black);
+}
 
+.started {
+  background-color: var(--medium-orange);
 }
 
 /* numeric-timer */

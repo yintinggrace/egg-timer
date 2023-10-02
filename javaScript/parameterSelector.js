@@ -51,7 +51,7 @@ function renderStep1(){
             </div>
             <h4>Medium</h4>
         </div>
-        <button>Next</button>
+        <button class="buttonNext">Next</button>
     </div>
     `;
 
@@ -119,7 +119,7 @@ function renderStep1(){
         }
     }
 
-    document.querySelector(".parameterSelectorMain button").addEventListener("click", saveData);
+    document.querySelector(".parameterSelectorMain .buttonNext").addEventListener("click", saveData);
     function saveData(){
         parameters.size = size;
         renderStep2();
@@ -154,8 +154,8 @@ function renderStep2(){
             </div>
             <h4>Medium</h4>
         </div>
-        <button>Next</button>
-    </div>`
+        <button class="buttonNext">Next</button>
+    </div>`;
 
 
     let eggCookSlider = main.querySelector(".eggCookSlider");
@@ -222,7 +222,7 @@ function renderStep2(){
         }
     }
 
-    document.querySelector(".parameterSelectorMain button").addEventListener("click", saveData)
+    document.querySelector(".parameterSelectorMain .buttonNext").addEventListener("click", saveData)
     function saveData(){
         parameters.cookingDirection = cookingDirection;
         renderStep3();
@@ -239,10 +239,10 @@ function renderStep3(){
     main.innerHTML = `
     <div class="wrapper">
         <h1>Make sure the water is boling before you start the timer</h1>
-        <button>Ready</button>
-    </div>`
+        <button class="buttonReady">Ready</button>
+    </div>`;
 
-    let readyButton = document.querySelector(".wrapper button");
+    let readyButton = document.querySelector(".wrapper .buttonReady");
     readyButton.addEventListener("click", () => renderTimer(parameters));
 }
 

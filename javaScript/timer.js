@@ -6,39 +6,96 @@ function renderTimer(parameters) {
     <img src="./images/arrow.png" alt="arrow" class="arrow">
   `;
 
+  let minutes = getMinutes(parameters);
+
   let wrapper = document.querySelector(".wrapper");
   wrapper.innerHTML = `
-    <div class="visual-timer"></div>
-    <div class="numeric-timer">xxx</div>
+    <div class="visual-timer">
+      <div class="circular-progress"></div>
+    </div>
+    <div class="numeric-timer">
+      <span class="minutes">${minutes < 10 ? "0" + minutes : minutes}</span>:<span class="seconds">00</span>
+    </div>
     <div class="button-timer">
       <button class="button-start">Start</button>
       <button class="button-reset">Reset</button>
     </div>
   `;
 
-  const numericTimer = document.querySelector(".numeric-timer");
-  numericTimer.textContent = "00:00";
-  updateNumericTimer(numericTimer, parameters);
+  // Click start button
+  let buttonStart = document.querySelector(".button-start");
+  buttonStart.addEventListener("click", () =>
+    countDownNumericTimer(minutes)
+  );
 }
 
-function updateNumericTimer(numericTimer, parameters) {
-  if (parameters.cookingDirection === "Soft" && parameters.size === "Small") {
-    numericTimer.textContent = "06:00";
-  } else if (parameters.cookingDirection === "Soft" && parameters.size === "Medium") {
-    numericTimer.textContent = "07:00";
-  } else if (parameters.cookingDirection === "Soft" && parameters.size === "Large") {
-    numericTimer.textContent = "08:00";
-  } else if (parameters.cookingDirection === "Medium" && parameters.size === "Small") {
-    numericTimer.textContent = "08:00";
-  } else if (parameters.cookingDirection === "Medium" && parameters.size === "Medium") {
-    numericTimer.textContent = "09:00";
-  } else if (parameters.cookingDirection === "Medium" && parameters.size === "Large") {
-    numericTimer.textContent = "10:00";
-  } else if (parameters.cookingDirection === "Hard" && parameters.size === "Small") {
-    numericTimer.textContent = "10:00";
-  } else if (parameters.cookingDirection === "Hard" && parameters.size === "Medium") {
-    numericTimer.textContent = "11:00";
-  } else if (parameters.cookingDirection === "Hard" && parameters.size === "Large") {
-    numericTimer.textContent = "12:00";
+function countDownNumericTimer(minutes) {
+  let totalSeconds = minutes * 60;
+
+  function updateCountdown() {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    // Display the countdown
+    document.querySelector(".minutes").innerText = minutes.toString().padStart(2, "0");
+    document.querySelector(".seconds").innerText = seconds.toString().padStart(2, "0");
+
+    if (totalSeconds <= 0) {
+      clearInterval(countdownInterval);
+    } else {
+      totalSeconds--;
+    }
+  }
+
+  // Initial call to start the countdown
+  const countdownInterval = setInterval(updateCountdown, 1000);
+}
+
+function getMinutes(parameters) {
+  if (
+    parameters.cookingDirection === "Soft" &&
+    parameters.size === "Small"
+  ) {
+    return 6;
+  } else if (
+    parameters.cookingDirection === "Soft" &&
+    parameters.size === "Medium"
+  ) {
+    return 7;
+  } else if (
+    parameters.cookingDirection === "Soft" &&
+    parameters.size === "Large"
+  ) {
+    return 8;
+  } else if (
+    parameters.cookingDirection === "Medium" &&
+    parameters.size === "Small"
+  ) {
+    return 8;
+  } else if (
+    parameters.cookingDirection === "Medium" &&
+    parameters.size === "Medium"
+  ) {
+    return 9;
+  } else if (
+    parameters.cookingDirection === "Medium" &&
+    parameters.size === "Large"
+  ) {
+    return 10;
+  } else if (
+    parameters.cookingDirection === "Hard" &&
+    parameters.size === "Small"
+  ) {
+    return 10;
+  } else if (
+    parameters.cookingDirection === "Hard" &&
+    parameters.size === "Medium"
+  ) {
+    return 11;
+  } else if (
+    parameters.cookingDirection === "Hard" &&
+    parameters.size === "Large"
+  ) {
+    return 12;
   }
 }

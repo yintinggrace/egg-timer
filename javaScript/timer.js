@@ -67,11 +67,21 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
   updateCountdown();
   const countdownInterval = setInterval(updateCountdown, 1000);
 
-  buttonPause.addEventListener("click", () => pauseTimer(countdownInterval));
+  buttonPause.addEventListener("click", () =>
+    pauseTimer(countdownInterval, buttonPause, buttonContinue)
+  );
 }
 
-function pauseTimer(countdownInterval) {
+function pauseTimer(countdownInterval, buttonPause, buttonContinue) {
   clearInterval(countdownInterval);
+
+  buttonPause.classList.remove("shown");
+  buttonPause.classList.add("hidden");
+  buttonContinue.classList.remove("hidden");
+  buttonContinue.classList.add("shown");
+  buttonContinue.innerHTML = `
+    <div class="continue">Continue</div>
+  `;
 }
 
 function getMinutes(parameters) {

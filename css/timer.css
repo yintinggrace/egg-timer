@@ -37,6 +37,11 @@
   background-color: var(--medium-orange);
 }
 
+.pause {
+  display: flex;
+  justify-content: center;
+}
+
 /* numeric-timer */
 .numeric-timer {
   font-family: var(--button-fontFamily);

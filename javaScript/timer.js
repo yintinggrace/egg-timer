@@ -26,11 +26,19 @@ function renderTimer(parameters) {
   let buttonStart = document.querySelector(".button-start");
 
   buttonStart.addEventListener("click", () =>
-    countDownNumericTimer(minutes)
+    countDownNumericTimer(minutes, buttonStart)
   );
 }
 
-function countDownNumericTimer(minutes) {
+function countDownNumericTimer(minutes, buttonStart) {
+  buttonStart.classList.add("started");
+  buttonStart.innerHTML = `
+    <div class="pause">
+      <img src="./images/pause.png" alt="pause">
+      <div>Pause</div>
+    </div>
+  `;
+
   let totalSeconds = minutes * 60;
 
   function updateCountdown() {

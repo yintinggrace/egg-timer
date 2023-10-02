@@ -90,7 +90,7 @@ function renderStep1(){
         let distanceToLeft = window.pageXOffset + egg.getBoundingClientRect().left;
         let elementWidth = egg.offsetWidth;
         let scrollLeft = document.documentElement.scrollLeft;
-        
+
 
         let opacity = 1;
         if(scrollLeft > (distanceToLeft - 400)){
@@ -107,7 +107,7 @@ function renderStep1(){
         let distanceToRight = window.innerWidth - (egg.getBoundingClientRect().left + egg.offsetWidth);
         let elementWidth = egg.offsetWidth;
         let scrollLeft = document.documentElement.scrollLeft;
-        
+
 
         let opacity = 1;
         if(scrollLeft > (distanceToRight - 200)){
@@ -136,7 +136,7 @@ function renderStep2(){
 
 
     let main = document.querySelector("main");
-    
+
     main.innerHTML = `
     <div class="wrapper">
         <h1>How would you like your eggs?</h1>
@@ -164,7 +164,7 @@ function renderStep2(){
 
     function cookSelector(event){
         let scrollDistance = eggCookSlider.scrollLeft;
-        console.log(scrollDistance);
+        // console.log(scrollDistance);
         scrollDistanceNum = Number(scrollDistance);
 
         if(scrollDistanceNum === 0 || scrollDistanceNum < 90){
@@ -193,7 +193,7 @@ function renderStep2(){
         let distanceToLeft = window.pageXOffset + egg.getBoundingClientRect().left;
         let elementWidth = egg.offsetWidth;
         let scrollLeft = document.documentElement.scrollLeft;
-        
+
 
         let opacity = 1;
         if(scrollLeft > (distanceToLeft - 100)){
@@ -210,7 +210,7 @@ function renderStep2(){
         let distanceToRight = window.innerWidth - (egg.getBoundingClientRect().left + egg.offsetWidth);
         let elementWidth = egg.offsetWidth;
         let scrollLeft = document.documentElement.scrollLeft;
-        
+
 
         let opacity = 1;
         if(scrollLeft > (distanceToRight - 100)){
@@ -233,15 +233,16 @@ function renderStep3(){
     let header = document.querySelector("header");
     header.querySelector(".animation").classList.remove("start-home");
     header.querySelector(".animation").classList.add("start-step3");
- 
+
     let main = document.querySelector("main");
-    
+
     main.innerHTML = `
     <div class="wrapper">
         <h1>Make sure the water is boling before you start the timer</h1>
         <button>Ready</button>
     </div>`
 
-    
+    let readyButton = document.querySelector(".wrapper button");
+    readyButton.addEventListener("click", () => renderTimer(parameters));
 }
 

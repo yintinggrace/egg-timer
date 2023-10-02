@@ -13,19 +13,27 @@
 
 .button-start,
 .button-reset {
-    background-color: var(--dark-orange);
-    color: var(--grey);
-    border-radius: 30px;
-    border: none;
-    height: 50px;
-    width: 110px;
-    margin: 5px;
-    font-family: var(--button-fontFamily);
-    font-size: var(--buttons-fontSize);
+  background-color: var(--dark-orange);
+  color: var(--grey);
+  border-radius: 30px;
+  border: none;
+  height: 50px;
+  width: 110px;
+  margin: 5px;
+  font-family: var(--button-fontFamily);
+  font-size: var(--buttons-fontSize);
 }
 
 .button-start {
   color: var(--white);
+}
+
+.shown {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }
 
 .button-reset {
@@ -33,13 +41,20 @@
   color: var(--black);
 }
 
-.started {
-  background-color: var(--medium-orange);
-}
-
 .pause {
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: var(--medium-orange);
+  color: var(--white);
+  border-radius: 30px;
+  border: none;
+  height: 50px;
+  width: 110px;
+  margin: 5px;
+  font-family: var(--button-fontFamily);
+  font-size: var(--buttons-fontSize);
+
 }
 
 /* numeric-timer */

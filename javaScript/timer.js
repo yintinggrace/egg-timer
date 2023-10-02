@@ -17,25 +17,32 @@ function renderTimer(parameters) {
       <span class="minutes">${minutes < 10 ? "0" + minutes : minutes}</span>:<span class="seconds">00</span>
     </div>
     <div class="button-timer">
-      <button class="button-start">Start</button>
+      <button class="button-start shown">Start</button>
+      <button class="button-pause hidden">Pause</button>
+      <button class="button-continue hidden">Continue</button>
       <button class="button-reset">Reset</button>
     </div>
   `;
 
   // Click start button
   let buttonStart = document.querySelector(".button-start");
+  let buttonPause = document.querySelector(".button-pause");
+  let buttonContinue = document.querySelector(".button-continue");
 
   buttonStart.addEventListener("click", () =>
-    countDownNumericTimer(minutes, buttonStart)
+    countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue)
   );
 }
 
-function countDownNumericTimer(minutes, buttonStart) {
-  buttonStart.classList.add("started");
-  buttonStart.innerHTML = `
+function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue) {
+  buttonStart.classList.remove("shown");
+  buttonStart.classList.add("hidden");
+  buttonPause.classList.remove("hidden");
+  buttonPause.classList.add("shown");
+  buttonPause.innerHTML = `
     <div class="pause">
       <img src="./images/pause.png" alt="pause">
-      <div>Pause</div>
+      <span>Pause</span>
     </div>
   `;
 
@@ -59,6 +66,11 @@ function countDownNumericTimer(minutes, buttonStart) {
   // Initial call to start the countdown
   updateCountdown();
   const countdownInterval = setInterval(updateCountdown, 1000);
+
+  buttonPause.addEventListener("click", pauseTimer);
+}
+
+function pauseTimer() {
 }
 
 function getMinutes(parameters) {

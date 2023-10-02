@@ -2,3 +2,24 @@
   transform: scaleX(-1);
   display: inline-block;
 }
+
+.button-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-timer .button-start,
+.button-timer .button-reset {
+  margin: 5px;
+}
+.button-timer .button-start {
+  /* margin-top: 0; */
+  color: var(--white);
+}
+
+.button-timer .button-reset {
+  background-color: var(--white);
+  color: var(--black);
+
+}

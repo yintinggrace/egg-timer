@@ -1,5 +1,6 @@
 "use strict";
-
+renderStep1();
+/*
 const headerDom = document.querySelector("header");
 const mainDom = document.querySelector(".main-frontpage");
 
@@ -14,4 +15,4 @@ const animElement = document.querySelector(".logo-vertical");
 
 animElement.addEventListener("animationend", () =>
   renderStageOne(headerDom, mainDom)
-);
+);*/

@@ -1,0 +1,158 @@
+*{
+    box-sizing: border-box;
+}
+
+/*NAVIGATION*/
+.navigationHeader{
+    height: 10vh;
+    padding: 30px;
+    padding-bottom: 30px;
+    padding-bottom: 0;
+}
+
+nav{
+    position: relative;
+    width: 100%;
+    height:50px;
+    background-color: var(--light-orange);
+    border-radius: 20px;
+    font-size: 0;
+    box-shadow: 0 2px 3px 0 rgba(0, 0  , 0, .1);
+    cursor: pointer;
+}
+
+nav a{
+    font-size: 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--grey);
+    line-height: 50px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    text-align: center;
+}
+
+nav .animation{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 0;
+    background: var(--dark-orange);
+    transition: all .5s ease 0s;
+}
+
+a:nth-child(1){
+    width:33.33%;
+}
+
+nav .start-home, a:nth-child(1):hover~.animation{
+    border-radius: 20px 0 0 20px;
+    width: 33.33%;
+    left: 0;
+}
+
+a:nth-child(2){
+    width:33.33%;
+}
+
+nav .start-step2, a:nth-child(2):hover~.animation{
+    border-radius: 0;
+    width: 33.33%;
+    left: 33.33%;
+}
+
+a:nth-child(3){
+    width:33.33%;
+}
+
+nav .start-step3, a:nth-child(3):hover~.animation{
+    border-radius: 0 20px 20px 0;
+    width: 33.33%;
+    left: 66.66%;
+}
+
+/*Main*/
+
+h1{
+    font-family: "Open Sans", sans-serif;
+    font-size: 36px;
+}
+
+.parameterSelectorMain{
+ height: 90vh;
+ padding: 30px;   
+ text-align: center;
+ color: var(--black);
+}
+
+.parameterSelectorMain h1{
+    margin-bottom: 20vh;
+}
+
+.eggSize, .eggCookingInstructions{
+    height: 30vh;
+    position: relative;
+}
+
+.eggSize:after{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(to right, rgba(255, 255, 255,0), rgba(246, 244, 218) 85%);
+    width: 15%;
+    height: 100%;
+}
+
+.eggSizeSlider, .eggCookSlider{
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    overflow-x: scroll;
+    gap: 10vw;
+    padding-left: 200px;
+}
+
+.eggSizeSlider > div, .eggCookSlider > div{
+    height: 100%;
+  
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.small img{
+   height: 50%;
+}
+
+.medium img{
+   height: 70%;
+}
+
+.large img{
+   height: 90%
+}
+
+.soft img, .medium img, .hard img{
+    height: 100%;
+}
+
+
+
+.parameterSelectorMain button{
+    background-color: var(--dark-orange);
+    color: var(--grey);
+    border-radius: 30px;
+    border: none;
+    height: 50px;
+    width: 110px;
+    margin-top: 4vh;
+}
+
+.parameterSelectorMain button:hover{
+    background-color: #ecab2a;
+    cursor: pointer;
+}

@@ -24,6 +24,7 @@ function renderTimer(parameters) {
 
   // Click start button
   let buttonStart = document.querySelector(".button-start");
+
   buttonStart.addEventListener("click", () =>
     countDownNumericTimer(minutes)
   );
@@ -33,12 +34,12 @@ function countDownNumericTimer(minutes) {
   let totalSeconds = minutes * 60;
 
   function updateCountdown() {
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
+    const minutesNew = Math.floor(totalSeconds / 60);
+    const secondsNew = totalSeconds % 60;
 
     // Display the countdown
-    document.querySelector(".minutes").innerText = minutes.toString().padStart(2, "0");
-    document.querySelector(".seconds").innerText = seconds.toString().padStart(2, "0");
+    document.querySelector(".minutes").innerText = minutesNew.toString().padStart(2, "0");
+    document.querySelector(".seconds").innerText = secondsNew.toString().padStart(2, "0");
 
     if (totalSeconds <= 0) {
       clearInterval(countdownInterval);
@@ -48,6 +49,7 @@ function countDownNumericTimer(minutes) {
   }
 
   // Initial call to start the countdown
+  updateCountdown();
   const countdownInterval = setInterval(updateCountdown, 1000);
 }
 

@@ -17,6 +17,7 @@ function renderTimer(parameters) {
   wrapper.innerHTML = `
     <div class="visual-timer">
       <div class="circular-progress"></div>
+      <img src="./images/cooking.png" alt="cooking" class="cooking">
     </div>
     <div class="numeric-timer">
       <span class="minutes">${minutes < 10 ? "0" + minutes : minutes}</span>:<span class="seconds">00</span>

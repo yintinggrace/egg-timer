@@ -76,6 +76,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px 0 20px 0;
+  position: relative;
 }
 
 .circular-progress {
@@ -97,4 +98,9 @@
   height: 300px;
   border-radius: 50%;
   background-color: var(--light-yellow);
+}
+
+.cooking {
+  width: 300px;
+  position: absolute;
 }

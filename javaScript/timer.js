@@ -29,16 +29,15 @@ function renderTimer(parameters) {
     </div>
   `;
 
-  // Click start button
   let buttonStart = document.querySelector(".button-start");
   let buttonPause = document.querySelector(".button-pause");
   let buttonContinue = document.querySelector(".button-continue");
+  let buttonReset = document.querySelector(".button-reset");
 
   buttonStart.addEventListener("click", () =>
     countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue)
   );
 
-  let buttonReset = document.querySelector(".button-reset");
   buttonReset.addEventListener("click", () =>
     resetTimer(minutes, buttonStart, buttonPause, buttonContinue)
   );
@@ -185,5 +184,4 @@ function resetTimer(minutes, buttonStart, buttonPause, buttonContinue) {
   buttonContinue.classList.add("hidden");
   buttonStart.classList.remove("hidden");
   buttonStart.classList.add("shown");
-
 }

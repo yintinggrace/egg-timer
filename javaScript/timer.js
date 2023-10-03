@@ -1,5 +1,10 @@
 "use strict";
 
+let countdownInterval;
+let totalSeconds = 0;
+let remainingSeconds = 0;
+let paused = false;
+
 function renderTimer(parameters) {
   let navigationHeader = document.querySelector(".navigationHeader");
   navigationHeader.innerHTML = `
@@ -46,34 +51,43 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
     </div>
   `;
 
-  let totalSeconds = minutes * 60;
+  totalSeconds = minutes * 60;
 
   function updateCountdown() {
-    const minutesNew = Math.floor(totalSeconds / 60);
-    const secondsNew = totalSeconds % 60;
-
-    // Display the countdown
-    document.querySelector(".minutes").innerText = minutesNew.toString().padStart(2, "0");
-    document.querySelector(".seconds").innerText = secondsNew.toString().padStart(2, "0");
-
     if (totalSeconds <= 0) {
       clearInterval(countdownInterval);
+      document.querySelector(".minutes").innerText = "00";
+      document.querySelector(".seconds").innerText = "00";
     } else {
       totalSeconds--;
+      const minutesNew = Math.floor(totalSeconds / 60);
+      const secondsNew = totalSeconds % 60;
+      document.querySelector(".minutes").innerText = minutesNew
+        .toString()
+        .padStart(2, "0");
+      document.querySelector(".seconds").innerText = secondsNew
+        .toString()
+        .padStart(2, "0");
     }
   }
 
-  // Initial call to start the countdown
   updateCountdown();
-  const countdownInterval = setInterval(updateCountdown, 1000);
+  countdownInterval = setInterval(updateCountdown, 1000);
 
   buttonPause.addEventListener("click", () =>
     pauseTimer(countdownInterval, buttonPause, buttonContinue)
+  );
+
+  buttonContinue.addEventListener("click", () =>
+    continueTimer(buttonPause, buttonContinue, updateCountdown)
   );
 }
 
 function pauseTimer(countdownInterval, buttonPause, buttonContinue) {
   clearInterval(countdownInterval);
+
+  remainingSeconds = totalSeconds;
+  paused = true;
 
   buttonPause.classList.remove("shown");
   buttonPause.classList.add("hidden");
@@ -82,6 +96,25 @@ function pauseTimer(countdownInterval, buttonPause, buttonContinue) {
   buttonContinue.innerHTML = `
     <div class="continue">Continue</div>
   `;
+}
+
+function continueTimer(buttonPause, buttonContinue, updateCountdown) {
+  paused = false;
+
+  buttonContinue.classList.remove("shown");
+  buttonContinue.classList.add("hidden");
+  buttonPause.classList.remove("hidden");
+  buttonPause.classList.add("shown");
+
+  clearInterval(countdownInterval);
+
+  countdownInterval = setInterval(() => {
+    if (totalSeconds <= 0) {
+      clearInterval(countdownInterval);
+    } else {
+      updateCountdown();
+    }
+  }, 1000);
 }
 
 function getMinutes(parameters) {

@@ -100,7 +100,7 @@
   background-color: var(--light-yellow);
 }
 
-.cooking {
+.cooking, .cooking-done {
   width: 300px;
   position: absolute;
 }

@@ -17,7 +17,8 @@ function renderTimer(parameters) {
   wrapper.innerHTML = `
     <div class="visual-timer">
       <div class="circular-progress"></div>
-      <img src="./images/cooking.png" alt="cooking" class="cooking">
+      <img src="./images/cooking.png" alt="cooking shown" class="cooking">
+      <img src="./images/done.png" alt="cooking-done" class="cooking-done hidden">
     </div>
     <div class="numeric-timer">
       <span class="minutes">${minutes < 10 ? "0" + minutes : minutes}</span>:<span class="seconds">00</span>
@@ -34,9 +35,11 @@ function renderTimer(parameters) {
   let buttonPause = document.querySelector(".button-pause");
   let buttonContinue = document.querySelector(".button-continue");
   let buttonReset = document.querySelector(".button-reset");
+  let cookingEgg = document.querySelector(".cooking");
+  let cookingDone = document.querySelector(".cooking-done");
 
   buttonStart.addEventListener("click", () =>
-    countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue)
+    countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEgg, cookingDone)
   );
 
   buttonReset.addEventListener("click", () =>
@@ -60,7 +63,7 @@ function renderVisualTimer(minutes) {
   }, 1000);
 }
 
-function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue) {
+function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEgg, cookingDone) {
   renderVisualTimer(minutes);
 
   buttonStart.classList.remove("shown");
@@ -82,6 +85,10 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
       document.querySelector(".minutes").innerText = "00";
       document.querySelector(".seconds").innerText = "00";
       buttonPause.classList.add("inactive");
+      cookingEgg.classList.remove("shown");
+      cookingEgg.classList.add("hidden");
+      cookingDone.classList.add("shown");
+      cookingDone.classList.remove("hidden");
     } else {
       totalSeconds--;
       const minutesNew = Math.floor(totalSeconds / 60);

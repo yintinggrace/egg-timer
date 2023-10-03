@@ -1,10 +1,7 @@
 /*TO DO:
-    - Slider fade on left side
+    Trdje akten:
     - Is opens sans a good font?
-    - Step 3 image
-    - White text on select on menu
-    - Scroll to medium on load
-    - Medium fade
+    - Yellow button color
 */
 
 let parameters = {
@@ -14,6 +11,7 @@ let parameters = {
 
 function renderStep1(){
     let size = "medium";
+    let scrollDistanceNum;
 
     let header = document.querySelector("header");
     header.classList.add("navigationHeader");
@@ -59,6 +57,15 @@ function renderStep1(){
     eggSizeSlider.addEventListener("scroll", sizeSelector);
     eggSizeSlider.addEventListener("scroll", scrollHandler);
 
+    setTimeout(() =>{
+        eggSizeSlider.scrollTo({
+            top:0,
+            left: 155,
+            behavior: "smooth",
+        })
+    }, 200);
+
+
     //Select egg size based on scroll position
     function sizeSelector(event){
         let scrollDistance = eggSizeSlider.scrollLeft;
@@ -83,6 +90,12 @@ function renderStep1(){
 
         fadeOnScrollLeft(smallEgg);
         fadeOnScrollRight(largeEgg);
+
+        if(scrollDistanceNum < 120){
+            fadeOnScrollRight(mediumEgg);
+        }else{
+            fadeOnScrollLeft(mediumEgg);
+        }
     }
 
     //Fade on left side
@@ -94,7 +107,7 @@ function renderStep1(){
 
         let opacity = 1;
         if(scrollLeft > (distanceToLeft - 400)){
-            opacity = .4 - (scrollLeft - distanceToLeft) / elementWidth;
+            opacity = .1 - (scrollLeft - distanceToLeft) / elementWidth;
         }
 
         if(opacity >= 0){
@@ -128,11 +141,19 @@ function renderStep1(){
 
 function renderStep2(){
     let cookingDirection = "medium";
+    let scrollDistanceNum;
 
+    //Select step 2 in navigation menu
     let header = document.querySelector("header");
     header.querySelector(".animation").classList.remove("start-home");
+    header.querySelector(".animation").classList.remove("start-step3");
     header.querySelector(".animation").classList.add("start-step2");
     header.querySelector(".step1").addEventListener("click", renderStep1);
+
+    header.querySelector(".step2").classList.add("selected");
+    header.querySelector(".step1").classList.remove("selected");
+    header.querySelector(".step3").classList.remove("selected");
+
 
 
     let main = document.querySelector("main");
@@ -162,9 +183,16 @@ function renderStep2(){
     eggCookSlider.addEventListener("scroll", cookSelector);
     eggCookSlider.addEventListener("scroll", scrollHandler);
 
+    setTimeout(() =>{
+        eggCookSlider.scrollTo({
+            top:0,
+            left: 180,
+            behavior: "smooth",
+        })
+    }, 100)
+
     function cookSelector(event){
         let scrollDistance = eggCookSlider.scrollLeft;
-        // console.log(scrollDistance);
         scrollDistanceNum = Number(scrollDistance);
 
         if(scrollDistanceNum === 0 || scrollDistanceNum < 90){
@@ -186,6 +214,12 @@ function renderStep2(){
 
         fadeOnScrollLeft(softEgg);
         fadeOnScrollRight(hardEgg);
+
+        if(scrollDistanceNum < 120){
+            fadeOnScrollRight(mediumEgg);
+        }else{
+            fadeOnScrollLeft(mediumEgg);
+        }
     }
 
     //Fade on left side
@@ -230,17 +264,24 @@ function renderStep2(){
 }
 
 function renderStep3(){
+     //Select step 3 in header
     let header = document.querySelector("header");
     header.querySelector(".animation").classList.remove("start-home");
     header.querySelector(".animation").classList.add("start-step3");
+    header.classList.add("navigationHeader");
+
+    header.querySelector(".step3").classList.add("selected");
+    header.querySelector(".step2").classList.remove("selected");
+    header.querySelector(".step1").classList.remove("selected");
 
     let main = document.querySelector("main");
 
     main.innerHTML = `
     <div class="wrapper">
-        <h1>Make sure the water is boling before you start the timer</h1>
+        <h1 class="longHeading">Make sure the water is boiling before you start the timer</h1>
+        <div class="cookingPotImg"></div>
         <button class="buttonReady">Ready</button>
-    </div>`;
+    </div>`
 
     let readyButton = document.querySelector(".wrapper .buttonReady");
     readyButton.addEventListener("click", () => renderTimer(parameters));

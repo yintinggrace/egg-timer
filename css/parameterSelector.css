@@ -78,7 +78,6 @@ nav .start-step3, a:nth-child(3):hover~.animation{
 }
 
 /*Main*/
-
 .parameterSelectorMain{
     height: 90vh;
     padding: 30px;
@@ -118,7 +117,6 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     height: 100%;
 }
 
-
 .eggSize:before, .eggCookingInstructions:before{
     content: "";
     position: absolute;
@@ -151,6 +149,7 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     margin-left: 230px;
     width: 60px;
 }
+
 .small img{
    height: 50%;
 }
@@ -158,6 +157,7 @@ nav .start-step3, a:nth-child(3):hover~.animation{
 .medium{
     width: 100px;
 }
+
 .medium img{
    height: 70%;
 }
@@ -166,6 +166,7 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     width: 100px;
     margin-right: 80px;
 }
+
 .large img{
    height: 90%;
 }

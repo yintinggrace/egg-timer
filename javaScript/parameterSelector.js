@@ -17,40 +17,40 @@ function renderStep1(){
     header.classList.add("navigationHeader");
 
     header.innerHTML = `
-    <nav id="navigation">
-        <a class="step1 selected" href"#">STEP 1</a>
-        <a class="step2" href"#">STEP 2</a>
-        <a class="step3" href"#">STEP 3</a>
-        <div class="animation start-home"></div>
-    </nav>
+        <nav id="navigation">
+            <a class="step1 selected" href"#">STEP 1</a>
+            <a class="step2" href"#">STEP 2</a>
+            <a class="step3" href"#">STEP 3</a>
+            <div class="animation start-home"></div>
+        </nav>
     `;
 
     header.querySelector(".step2").addEventListener("click", renderStep2);
     header.querySelector(".step3").addEventListener("click", renderStep3);
 
     let main = document.querySelector("main");
-    main.className='';
+    main.className = '';
     main.classList.add("parameterSelectorMain");
 
     main.innerHTML = `
-    <div class="wrapper">
-        <h1>What size are your eggs?</h1>
-        <div class="eggSize">
-            <div class="eggSizeSlider">
-                <div class="egg small">
-                    <img src="./images/egg-size.png">
+        <div class="wrapper">
+            <h1>What size are your eggs?</h1>
+            <div class="eggSize">
+                <div class="eggSizeSlider">
+                    <div class="egg small">
+                        <img src="./images/egg-size.png">
+                    </div>
+                    <div class="egg medium selected">
+                        <img src="./images/egg-size.png">
+                    </div>
+                    <div class="egg large">
+                        <img src="./images/egg-size.png">
+                    </div>
                 </div>
-                <div class="egg medium selected">
-                    <img src="./images/egg-size.png">
-                </div>
-                <div class="egg large">
-                    <img src="./images/egg-size.png">
-                </div>
+                <h4>Medium</h4>
             </div>
-            <h4>Medium</h4>
+            <button class="buttonNext">Next</button>
         </div>
-        <button class="buttonNext">Next</button>
-    </div>
     `;
 
     let eggSizeSlider = main.querySelector(".eggSizeSlider");
@@ -64,7 +64,6 @@ function renderStep1(){
             behavior: "smooth",
         })
     }, 200);
-
 
     //Select egg size based on scroll position
     function sizeSelector(event){
@@ -104,7 +103,6 @@ function renderStep1(){
         let elementWidth = egg.offsetWidth;
         let scrollLeft = document.documentElement.scrollLeft;
 
-
         let opacity = 1;
         if(scrollLeft > (distanceToLeft - 400)){
             opacity = .1 - (scrollLeft - distanceToLeft) / elementWidth;
@@ -120,7 +118,6 @@ function renderStep1(){
         let distanceToRight = window.innerWidth - (egg.getBoundingClientRect().left + egg.offsetWidth);
         let elementWidth = egg.offsetWidth;
         let scrollLeft = document.documentElement.scrollLeft;
-
 
         let opacity = 1;
         if(scrollLeft > (distanceToRight - 200)){
@@ -154,29 +151,28 @@ function renderStep2(){
     header.querySelector(".step1").classList.remove("selected");
     header.querySelector(".step3").classList.remove("selected");
 
-
-
     let main = document.querySelector("main");
 
     main.innerHTML = `
-    <div class="wrapper">
-        <h1>How would you like your eggs?</h1>
-        <div class="eggCookingInstructions">
-            <div class="eggCookSlider">
-                <div class="soft">
-                    <img src="./images/egg-soft.png">
+        <div class="wrapper">
+            <h1>How would you like your eggs?</h1>
+            <div class="eggCookingInstructions">
+                <div class="eggCookSlider">
+                    <div class="soft">
+                        <img src="./images/egg-soft.png">
+                    </div>
+                    <div class="medium selected">
+                        <img src="./images/egg-medium.png">
+                    </div>
+                    <div class="hard">
+                        <img src="./images/egg-hard.png">
+                    </div>
                 </div>
-                <div class="medium selected">
-                    <img src="./images/egg-medium.png">
-                </div>
-                <div class="hard">
-                    <img src="./images/egg-hard.png">
-                </div>
+                <h4>Medium</h4>
             </div>
-            <h4>Medium</h4>
+            <button class="buttonNext">Next</button>
         </div>
-        <button class="buttonNext">Next</button>
-    </div>`;
+    `;
 
 
     let eggCookSlider = main.querySelector(".eggCookSlider");
@@ -228,7 +224,6 @@ function renderStep2(){
         let elementWidth = egg.offsetWidth;
         let scrollLeft = document.documentElement.scrollLeft;
 
-
         let opacity = 1;
         if(scrollLeft > (distanceToLeft - 100)){
             opacity = .9 - (scrollLeft - distanceToLeft) / elementWidth;
@@ -245,7 +240,6 @@ function renderStep2(){
         let elementWidth = egg.offsetWidth;
         let scrollLeft = document.documentElement.scrollLeft;
 
-
         let opacity = 1;
         if(scrollLeft > (distanceToRight - 100)){
             opacity = .9 - (scrollLeft - distanceToRight) / elementWidth;
@@ -256,7 +250,7 @@ function renderStep2(){
         }
     }
 
-    document.querySelector(".parameterSelectorMain .buttonNext").addEventListener("click", saveData)
+    document.querySelector(".parameterSelectorMain .buttonNext").addEventListener("click", saveData);
     function saveData(){
         parameters.cookingDirection = cookingDirection;
         renderStep3();
@@ -264,7 +258,7 @@ function renderStep2(){
 }
 
 function renderStep3(){
-     //Select step 3 in header
+    //Select step 3 in header
     let header = document.querySelector("header");
     header.querySelector(".animation").classList.remove("start-home");
     header.querySelector(".animation").classList.add("start-step3");
@@ -277,11 +271,12 @@ function renderStep3(){
     let main = document.querySelector("main");
 
     main.innerHTML = `
-    <div class="wrapper">
-        <h1 class="longHeading">Make sure the water is boiling before you start the timer</h1>
-        <div class="cookingPotImg"></div>
-        <button class="buttonReady">Ready</button>
-    </div>`
+        <div class="wrapper">
+            <h1 class="longHeading">Make sure the water is boiling before you start the timer</h1>
+            <div class="cookingPotImg"></div>
+            <button class="buttonReady">Ready</button>
+        </div>
+    `;
 
     let readyButton = document.querySelector(".wrapper .buttonReady");
     readyButton.addEventListener("click", () => renderTimer(parameters));

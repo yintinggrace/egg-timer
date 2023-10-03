@@ -1,8 +1,6 @@
 :root {
   /* colors */
   --light-yellow: rgb(246, 244, 221);
-  /*--medium-yellow: rgb(248, 236, 122);*/
-  /*--dark-yellow: rgb(250, 233, 95);*/
   --light-orange: rgb(250, 229, 189);
   --medium-orange: rgb(246, 207, 124);
   --dark-orange: rgb(255, 193, 73);
@@ -12,7 +10,7 @@
   --button-orange-hover: rgb(236, 171, 42);
   --button-white-hover: rgb(244, 243, 243);
 
-  /*Fonts*/
+  /* Fonts */
   --buttons-fontSize: 16px;
   --button-fontFamily: Poppins;
 

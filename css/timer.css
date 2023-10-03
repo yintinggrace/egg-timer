@@ -15,6 +15,7 @@
 .button-reset {
   background-color: var(--dark-orange);
   color: var(--grey);
+  cursor: pointer;
   border-radius: 30px;
   border: none;
   height: 50px;
@@ -47,6 +48,7 @@
   align-items: center;
   background-color: var(--medium-orange);
   color: var(--white);
+  cursor: pointer;
   border-radius: 30px;
   border: none;
   height: 50px;

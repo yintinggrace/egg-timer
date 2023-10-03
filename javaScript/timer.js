@@ -33,8 +33,6 @@ function renderTimer(parameters) {
   let buttonPause = document.querySelector(".button-pause");
   let buttonContinue = document.querySelector(".button-continue");
   let buttonReset = document.querySelector(".button-reset");
-  let visualTimer = document.querySelector(".visual-timer");
-  let circularProgress = document.querySelector(".circular-progress");
 
   buttonStart.addEventListener("click", () =>
     countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue)
@@ -43,15 +41,27 @@ function renderTimer(parameters) {
   buttonReset.addEventListener("click", () =>
     resetTimer(minutes, buttonStart, buttonPause, buttonContinue)
   );
-
-  renderVisualTimer(minutes);
 }
 
 function renderVisualTimer(minutes) {
+  totalSeconds = minutes * 60;
 
+  let progressStartValue = 0;
+  const circularProgress = document.querySelector(".circular-progress");
+
+  let progressInterval = setInterval(() => {
+    if (totalSeconds <= 0) {
+      clearInterval(progressInterval);
+    } else {
+      progressStartValue = ((minutes * 60 - totalSeconds) / (minutes * 60)) * 360;
+      circularProgress.style.background = `conic-gradient(#f9ca24 ${progressStartValue}deg, #fff 0deg)`;
+    }
+  }, 1000);
 }
 
 function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue) {
+  renderVisualTimer(minutes);
+
   buttonStart.classList.remove("shown");
   buttonStart.classList.add("hidden");
   buttonPause.classList.remove("hidden");

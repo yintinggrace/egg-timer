@@ -37,6 +37,11 @@ function renderTimer(parameters) {
   buttonStart.addEventListener("click", () =>
     countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue)
   );
+
+  let buttonReset = document.querySelector(".button-reset");
+  buttonReset.addEventListener("click", () =>
+    resetTimer(minutes)
+  );
 }
 
 function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue) {
@@ -165,4 +170,14 @@ function getMinutes(parameters) {
   ) {
     return 12;
   }
+}
+
+function resetTimer(minutes) {
+  clearInterval(countdownInterval);
+
+  document.querySelector(".numeric-timer").innerHTML = `
+    <span class="minutes">${
+      minutes < 10 ? "0" + minutes : minutes
+    }</span>:<span class="seconds">00</span>
+  `;
 }

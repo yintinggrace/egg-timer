@@ -40,7 +40,7 @@ function renderTimer(parameters) {
 
   let buttonReset = document.querySelector(".button-reset");
   buttonReset.addEventListener("click", () =>
-    resetTimer(minutes)
+    resetTimer(minutes, buttonStart, buttonPause, buttonContinue)
   );
 }
 
@@ -172,7 +172,7 @@ function getMinutes(parameters) {
   }
 }
 
-function resetTimer(minutes) {
+function resetTimer(minutes, buttonStart, buttonPause, buttonContinue) {
   clearInterval(countdownInterval);
 
   document.querySelector(".numeric-timer").innerHTML = `
@@ -180,4 +180,10 @@ function resetTimer(minutes) {
       minutes < 10 ? "0" + minutes : minutes
     }</span>:<span class="seconds">00</span>
   `;
+
+  buttonPause.classList.add("hidden");
+  buttonContinue.classList.add("hidden");
+  buttonStart.classList.remove("hidden");
+  buttonStart.classList.add("shown");
+
 }

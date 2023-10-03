@@ -31,12 +31,15 @@ function renderTimer(parameters) {
     </div>
   `;
 
+  let arrow = document.querySelector(".arrow");
   let buttonStart = document.querySelector(".button-start");
   let buttonPause = document.querySelector(".button-pause");
   let buttonContinue = document.querySelector(".button-continue");
   let buttonReset = document.querySelector(".button-reset");
   let cookingEgg = document.querySelector(".cooking");
   let cookingDone = document.querySelector(".cooking-done");
+
+  arrow.addEventListener("click", renderQuestionPage);
 
   buttonStart.addEventListener("click", () =>
     countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEgg, cookingDone)
@@ -45,6 +48,10 @@ function renderTimer(parameters) {
   buttonReset.addEventListener("click", () =>
     resetTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEgg, cookingDone)
   );
+}
+
+function renderQuestionPage() {
+  renderStep1();
 }
 
 function renderVisualTimer(minutes) {

@@ -66,6 +66,7 @@ function renderVisualTimer(minutes) {
 function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEgg, cookingDone) {
   renderVisualTimer(minutes);
 
+  cookingEgg.classList.add("bounce");
   buttonStart.classList.remove("shown");
   buttonStart.classList.add("hidden");
   buttonPause.classList.remove("hidden");
@@ -106,7 +107,7 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
   countdownInterval = setInterval(updateCountdown, 1000);
 
   buttonPause.addEventListener("click", () =>
-    pauseTimer(countdownInterval, buttonPause, buttonContinue)
+    pauseTimer(countdownInterval, buttonPause, buttonContinue, cookingEgg)
   );
 
   buttonContinue.addEventListener("click", () =>
@@ -114,12 +115,13 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
   );
 }
 
-function pauseTimer(countdownInterval, buttonPause, buttonContinue) {
+function pauseTimer(countdownInterval, buttonPause, buttonContinue, cookingEgg) {
   clearInterval(countdownInterval);
 
   remainingSeconds = totalSeconds;
   paused = true;
 
+  cookingEgg.classList.remove("bounce");
   buttonPause.classList.remove("shown");
   buttonPause.classList.add("hidden");
   buttonContinue.classList.remove("hidden");
@@ -136,6 +138,7 @@ function continueTimer(buttonPause, buttonContinue, updateCountdown, cookingEgg,
   buttonContinue.classList.add("hidden");
   buttonPause.classList.remove("hidden");
   buttonPause.classList.add("shown");
+  cookingEgg.classList.add("bounce");
 
   clearInterval(countdownInterval);
 
@@ -146,6 +149,7 @@ function continueTimer(buttonPause, buttonContinue, updateCountdown, cookingEgg,
       buttonPause.classList.add("inactive");
       cookingEgg.classList.remove("shown");
       cookingEgg.classList.add("hidden");
+      cookingEgg.classList.remove("bounce");
       cookingDone.classList.add("shown");
       cookingDone.classList.remove("hidden");
     } else {
@@ -218,6 +222,7 @@ function resetTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEg
   buttonStart.classList.add("shown");
   buttonPause.classList.remove("inactive");
 
+  cookingEgg.classList.remove("bounce");
   cookingEgg.classList.add("shown");
   cookingEgg.classList.remove("hidden");
   cookingDone.classList.remove("shown");

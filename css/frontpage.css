@@ -6,16 +6,16 @@
   box-sizing: border-box;
 }
 
-.logo-vertical {
+.logo {
   text-align: center;
   animation: myAnim 2s ease 0s 1 normal forwards;
 }
 
-.logo-vertical img{
+.logo img{
   height: 320px;
 }
 
-.logo-vertical h2 {
+.logo h2 {
   font-family: "Rock Salt";
   text-align: center;
 }

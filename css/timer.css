@@ -2,6 +2,7 @@
   transform: scaleX(-1);
   display: inline-block;
   width: 28px;
+  cursor: pointer;
 }
 
 /* buttons */

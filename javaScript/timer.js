@@ -142,6 +142,8 @@ function continueTimer(buttonPause, buttonContinue, updateCountdown) {
   countdownInterval = setInterval(() => {
     if (totalSeconds <= 0) {
       clearInterval(countdownInterval);
+      buttonPause.classList.remove("shown");
+      buttonPause.classList.add("inactive");
     } else {
       updateCountdown();
     }

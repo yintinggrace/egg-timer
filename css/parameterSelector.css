@@ -34,6 +34,10 @@ nav a{
     text-align: center;
 }
 
+.selected{
+    color: white;
+}
+
 nav .animation{
     position: absolute;
     height: 100%;
@@ -88,7 +92,11 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     margin-bottom: 10vh;
 }
 
-.eggSize, .eggCookingInstructions{
+.parameterSelectorMain .longHeading{
+    margin-bottom: 0;
+}
+
+.eggSize, .eggCookingInstructions, .cookingPotImg{
     height: 40vh;
     position: relative;
     font-family: var(--heading-fontFamily);
@@ -111,16 +119,16 @@ nav .start-step3, a:nth-child(3):hover~.animation{
 }
 
 
-/*.eggSize:before{
+.eggSize:before, .eggCookingInstructions:before{
     content: "";
     position: absolute;
     z-index: 1;
     top: 0;
-    right: 0;
+    left: 0;
     background-image: linear-gradient(to left, rgba(255, 255, 255,0), rgba(246, 244, 218) 85%);
     width: 5%;
     height: 100%;
-}*/
+}
 
 .eggSizeSlider, .eggCookSlider{
     height: 80%;
@@ -175,8 +183,17 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     margin-right: 80px;
 }
 
+.cookingPotImg{
+    background-image: url(../images/pot3.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
 
+/*Button*/
 .parameterSelectorMain button{
     background-color: var(--dark-orange);
     color: var(--grey);

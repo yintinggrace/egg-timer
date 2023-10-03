@@ -43,7 +43,7 @@ function renderTimer(parameters) {
   );
 
   buttonReset.addEventListener("click", () =>
-    resetTimer(minutes, buttonStart, buttonPause, buttonContinue)
+    resetTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEgg, cookingDone)
   );
 }
 
@@ -197,7 +197,7 @@ function getMinutes(parameters) {
   }
 }
 
-function resetTimer(minutes, buttonStart, buttonPause, buttonContinue) {
+function resetTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEgg, cookingDone) {
   clearInterval(countdownInterval);
 
   document.querySelector(".numeric-timer").innerHTML = `
@@ -210,4 +210,9 @@ function resetTimer(minutes, buttonStart, buttonPause, buttonContinue) {
   buttonContinue.classList.add("hidden");
   buttonStart.classList.remove("hidden");
   buttonStart.classList.add("shown");
+
+  cookingEgg.classList.add("shown");
+  cookingEgg.classList.remove("hidden");
+  cookingDone.classList.remove("shown");
+  cookingDone.classList.add("hidden");
 }

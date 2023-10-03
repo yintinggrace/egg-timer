@@ -60,6 +60,10 @@
   background-color: var(--dark-orange);
 }
 
+.inactive {
+  opacity: 0.3;
+}
+
 /* numeric-timer */
 .numeric-timer {
   font-family: var(--button-fontFamily);

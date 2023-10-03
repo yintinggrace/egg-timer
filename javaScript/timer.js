@@ -58,6 +58,7 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
       clearInterval(countdownInterval);
       document.querySelector(".minutes").innerText = "00";
       document.querySelector(".seconds").innerText = "00";
+      buttonPause.classList.add("inactive");
     } else {
       totalSeconds--;
       const minutesNew = Math.floor(totalSeconds / 60);
@@ -122,7 +123,7 @@ function getMinutes(parameters) {
     parameters.cookingDirection === "Soft" &&
     parameters.size === "Small"
   ) {
-    return 6;
+    return 1;
   } else if (
     parameters.cookingDirection === "Soft" &&
     parameters.size === "Medium"

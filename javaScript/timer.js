@@ -216,4 +216,6 @@ function resetTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEg
   cookingEgg.classList.remove("hidden");
   cookingDone.classList.remove("shown");
   cookingDone.classList.add("hidden");
+
+  renderVisualTimer(minutes);
 }

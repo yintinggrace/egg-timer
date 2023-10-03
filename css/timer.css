@@ -69,3 +69,31 @@
   font-family: var(--button-fontFamily);
   font-size: 50px;
 }
+
+/* visual-timer */
+.visual-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0 20px 0;
+}
+
+.circular-progress {
+  height: 330px;
+  width: 330px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: var(--white);
+}
+
+.circular-progress::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: var(--light-yellow);
+}

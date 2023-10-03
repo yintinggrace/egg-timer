@@ -33,6 +33,8 @@ function renderTimer(parameters) {
   let buttonPause = document.querySelector(".button-pause");
   let buttonContinue = document.querySelector(".button-continue");
   let buttonReset = document.querySelector(".button-reset");
+  let visualTimer = document.querySelector(".visual-timer");
+  let circularProgress = document.querySelector(".circular-progress");
 
   buttonStart.addEventListener("click", () =>
     countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue)
@@ -41,6 +43,12 @@ function renderTimer(parameters) {
   buttonReset.addEventListener("click", () =>
     resetTimer(minutes, buttonStart, buttonPause, buttonContinue)
   );
+
+  renderVisualTimer(minutes);
+}
+
+function renderVisualTimer(minutes) {
+
 }
 
 function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue) {

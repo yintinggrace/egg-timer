@@ -63,10 +63,11 @@ function renderVisualTimer(minutes) {
   let progressInterval = setInterval(() => {
     if (totalSeconds <= 0) {
       clearInterval(progressInterval);
-    } else {
-      progressStartValue = ((minutes * 60 - totalSeconds) / (minutes * 60)) * 360;
-      circularProgress.style.background = `conic-gradient(#f9ca24 ${progressStartValue}deg, #fff 0deg)`;
     }
+
+    progressStartValue = ((minutes * 60 - totalSeconds) / (minutes * 60)) * 360;
+
+    circularProgress.style.background = `conic-gradient(#f9ca24 ${progressStartValue}deg, #fff 0deg)`;
   }, 1000);
 }
 
@@ -98,15 +99,11 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
       cookingDone.classList.add("shown");
       cookingDone.classList.remove("hidden");
     } else {
-      totalSeconds--;
       const minutesNew = Math.floor(totalSeconds / 60);
       const secondsNew = totalSeconds % 60;
-      document.querySelector(".minutes").innerText = minutesNew
-        .toString()
-        .padStart(2, "0");
-      document.querySelector(".seconds").innerText = secondsNew
-        .toString()
-        .padStart(2, "0");
+      document.querySelector(".minutes").innerText = minutesNew.toString().padStart(2, "0");
+      document.querySelector(".seconds").innerText = secondsNew.toString().padStart(2, "0");
+      totalSeconds--;
     }
   }
 

@@ -110,7 +110,7 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
   );
 
   buttonContinue.addEventListener("click", () =>
-    continueTimer(buttonPause, buttonContinue, updateCountdown)
+    continueTimer(buttonPause, buttonContinue, updateCountdown, cookingEgg, cookingDone)
   );
 }
 
@@ -129,7 +129,7 @@ function pauseTimer(countdownInterval, buttonPause, buttonContinue) {
   `;
 }
 
-function continueTimer(buttonPause, buttonContinue, updateCountdown) {
+function continueTimer(buttonPause, buttonContinue, updateCountdown, cookingEgg, cookingDone) {
   paused = false;
 
   buttonContinue.classList.remove("shown");
@@ -144,6 +144,10 @@ function continueTimer(buttonPause, buttonContinue, updateCountdown) {
       clearInterval(countdownInterval);
       buttonPause.classList.remove("shown");
       buttonPause.classList.add("inactive");
+      cookingEgg.classList.remove("shown");
+      cookingEgg.classList.add("hidden");
+      cookingDone.classList.add("shown");
+      cookingDone.classList.remove("hidden");
     } else {
       updateCountdown();
     }

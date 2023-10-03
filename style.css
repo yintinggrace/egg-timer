@@ -9,6 +9,8 @@
   --white: rgb(255, 255, 255);
   --black: rgb(62, 62, 62);
   --grey: rgb(152, 152, 152);
+  --button-orange-hover: rgb(236, 171, 42);
+  --button-white-hover: rgb(244, 243, 243);
 
   /*Fonts*/
   --buttons-fontSize: 16px;

@@ -62,6 +62,16 @@
   background-color: var(--dark-orange);
 }
 
+.button-start:hover,
+.pause:hover,
+.continue:hover {
+  background-color: var(--button-orange-hover);
+}
+
+.button-reset:hover {
+  background-color: var(--button-white-hover);
+}
+
 .inactive {
   opacity: 0.3;
 }

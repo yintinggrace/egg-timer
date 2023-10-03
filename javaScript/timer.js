@@ -210,6 +210,7 @@ function resetTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEg
   buttonContinue.classList.add("hidden");
   buttonStart.classList.remove("hidden");
   buttonStart.classList.add("shown");
+  buttonPause.classList.remove("inactive");
 
   cookingEgg.classList.add("shown");
   cookingEgg.classList.remove("hidden");

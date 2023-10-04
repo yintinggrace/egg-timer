@@ -169,7 +169,7 @@ function getMinutes(parameters) {
     parameters.cookingDirection === "Soft" &&
     parameters.size === "Small"
   ) {
-    return 1;
+    return 6;
   } else if (
     parameters.cookingDirection === "Soft" &&
     parameters.size === "Medium"

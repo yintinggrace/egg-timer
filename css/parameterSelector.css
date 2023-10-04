@@ -206,6 +206,7 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     margin-top: 4vh;
     font-family: var(--button-fontFamily);
     font-size: var(--buttons-fontSize);
+    color: var(--white);
 }
 
 .parameterSelectorMain .buttonNext:hover,

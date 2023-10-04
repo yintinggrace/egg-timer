@@ -4,6 +4,7 @@ let countdownInterval;
 let totalSeconds = 0;
 let remainingSeconds = 0;
 let paused = false;
+let audio = new Audio("./alarm-clock.mp3");
 
 function renderTimer(parameters) {
   let navigationHeader = document.querySelector(".navigationHeader");
@@ -89,7 +90,7 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
   totalSeconds = minutes * 60;
 
   function updateCountdown() {
-    let audio = new Audio("./alarm-clock.mp3");
+    // let audio = new Audio("./alarm-clock.mp3");
     if (totalSeconds <= 0) {
       clearInterval(countdownInterval);
       document.querySelector(".minutes").innerText = "00";
@@ -225,6 +226,7 @@ function resetTimer(minutes, buttonStart, buttonPause, buttonContinue, cookingEg
     }</span>:<span class="seconds">00</span>
   `;
 
+  audio.pause();
   buttonPause.classList.add("hidden");
   buttonContinue.classList.add("hidden");
   buttonStart.classList.remove("hidden");

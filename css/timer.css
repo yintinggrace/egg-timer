@@ -79,7 +79,7 @@
 
 /* numeric-timer */
 .numeric-timer {
-  font-family: var(--button-fontFamily);
+  font-family: var(--heading-fontFamily);
   font-size: 50px;
   padding: 20px;
 }

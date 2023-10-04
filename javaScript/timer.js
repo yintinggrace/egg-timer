@@ -89,6 +89,7 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
   totalSeconds = minutes * 60;
 
   function updateCountdown() {
+    let audio = new Audio("./alarm-clock.mp3");
     if (totalSeconds <= 0) {
       clearInterval(countdownInterval);
       document.querySelector(".minutes").innerText = "00";
@@ -98,6 +99,7 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
       cookingEgg.classList.add("hidden");
       cookingDone.classList.add("shown");
       cookingDone.classList.remove("hidden");
+      audio.play();
     } else {
       const minutesNew = Math.floor(totalSeconds / 60);
       const secondsNew = totalSeconds % 60;
@@ -169,7 +171,7 @@ function getMinutes(parameters) {
     parameters.cookingDirection === "Soft" &&
     parameters.size === "Small"
   ) {
-    return 6;
+    return 1;
   } else if (
     parameters.cookingDirection === "Soft" &&
     parameters.size === "Medium"

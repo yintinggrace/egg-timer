@@ -146,8 +146,10 @@ function continueTimer(buttonPause, buttonContinue, updateCountdown, cookingEgg,
 
   clearInterval(countdownInterval);
 
+  totalSeconds = remainingSeconds;
+
   countdownInterval = setInterval(() => {
-    if (totalSeconds <= 0) {
+    if (remainingSeconds <= 0) {
       clearInterval(countdownInterval);
       buttonPause.classList.remove("shown");
       buttonPause.classList.add("inactive");
@@ -167,7 +169,7 @@ function getMinutes(parameters) {
     parameters.cookingDirection === "Soft" &&
     parameters.size === "Small"
   ) {
-    return 6;
+    return 1;
   } else if (
     parameters.cookingDirection === "Soft" &&
     parameters.size === "Medium"

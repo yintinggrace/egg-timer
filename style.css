@@ -1,12 +1,12 @@
 :root {
   /* colors */
-  --light-yellow: rgb(246, 244, 221);
-  --light-orange: rgb(250, 229, 189);
-  --medium-orange: rgb(246, 207, 124);
-  --dark-orange: rgb(255, 193, 73);
-  --white: rgb(255, 255, 255);
-  --black: rgb(62, 62, 62);
-  --grey: rgb(152, 152, 152);
+  --light-yellow: rgb(246, 244, 221); /*Background*/
+  --light-orange: rgb(250, 229, 189); /*Navigation background*/
+  --medium-orange: rgb(246, 207, 124); /*Inactive button*/
+  --dark-orange: rgb(255, 193, 73); /*Buttons, navigation*/
+  --white: rgb(255, 255, 255); /*Light Text and other white elements*/
+  --black: rgb(62, 62, 62); /*Dark Text and other black elements*/
+  --grey: rgb(152, 152, 152); /*Unselected Text Navigation*/
   --button-orange-hover: rgb(236, 171, 42);
   --button-white-hover: rgb(244, 243, 243);
 

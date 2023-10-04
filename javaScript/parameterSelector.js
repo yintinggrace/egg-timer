@@ -78,6 +78,8 @@ function renderStep1(){
             size = "Large";
         }
 
+        parameters.size = size;
+
         main.querySelector("h4").textContent = size;
     }
 
@@ -131,7 +133,6 @@ function renderStep1(){
 
     document.querySelector(".parameterSelectorMain .buttonNext").addEventListener("click", saveData);
     function saveData(){
-        parameters.size = size;
         renderStep2();
     }
 }
@@ -199,6 +200,8 @@ function renderStep2(){
             cookingDirection = "Hard";
         }
 
+        parameters.cookingDirection = cookingDirection;
+
         main.querySelector("h4").textContent = cookingDirection;
     }
 
@@ -252,7 +255,6 @@ function renderStep2(){
 
     document.querySelector(".parameterSelectorMain .buttonNext").addEventListener("click", saveData);
     function saveData(){
-        parameters.cookingDirection = cookingDirection;
         renderStep3();
     }
 }

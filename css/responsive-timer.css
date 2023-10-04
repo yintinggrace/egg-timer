@@ -1,0 +1,56 @@
+@media (min-width: 320px) and (max-width: 568px) {
+  .circular-progress {
+    height: 270px;
+    width: 270px;
+  }
+
+  .circular-progress::before {
+    width: 240px;
+    height: 240px;
+  }
+
+  .visual-timer {
+    padding: 0;
+  }
+
+  .numeric-timer {
+    padding: 14px 0 10px 0;
+  }
+
+  .cooking, .cooking-done {
+    width: 270px;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 844px) {
+  .circular-progress {
+    height: 290px;
+    width: 290px;
+  }
+
+  .circular-progress::before {
+    width: 260px;
+    height: 260px;
+  }
+
+  .visual-timer {
+    padding: 20px 0;
+  }
+
+  .numeric-timer {
+   padding: 20px 0;
+  }
+}
+
+@media (min-width: 414px) and (max-width: 896px) {
+  .numeric-timer {
+   padding: 30px 0;
+  }
+
+  .button-timer {
+    gap: 10px;
+  }
+}
+
+@media (min-width: 568px) and (max-width: 568px) {
+}

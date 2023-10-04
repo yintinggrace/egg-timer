@@ -100,6 +100,7 @@ function countDownNumericTimer(minutes, buttonStart, buttonPause, buttonContinue
       cookingDone.classList.add("shown");
       cookingDone.classList.remove("hidden");
       audio.play();
+      buttonPause.disabled = "disabled";
     } else {
       const minutesNew = Math.floor(totalSeconds / 60);
       const secondsNew = totalSeconds % 60;

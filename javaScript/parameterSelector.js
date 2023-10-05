@@ -275,7 +275,9 @@ function renderStep3(){
     main.innerHTML = `
         <div class="wrapper">
             <h1 class="longHeading">Make sure the water is boiling before you start the timer</h1>
-            <div class="cookingPotImg"></div>
+            <div class="cookingPotImg">
+                <img src="./images/pot.png">   
+            </div>
             <button class="buttonReady">Ready</button>
         </div>
     `;

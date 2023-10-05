@@ -11,6 +11,7 @@
 }
 
 nav{
+    margin-top: 3vh;
     position: relative;
     width: 100%;
     height:50px;
@@ -88,11 +89,13 @@ nav .start-step3, a:nth-child(3):hover~.animation{
 .parameterSelectorMain h1{
     font-family: var(--heading-fontFamily);
     font-size: var(--heading-fontSize);
-    margin-bottom: 10vh;
+    margin-top: 9vh;
+    margin-bottom: 2vh;
 }
 
 .parameterSelectorMain .longHeading{
     margin-bottom: 0;
+    margin-top: 5.5vh;
 }
 
 .eggSize, .eggCookingInstructions, .cookingPotImg{
@@ -102,8 +105,19 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     font-size: var(--heading-fontSizeSmall);
 }
 
+.cookingPotImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cookingPotImg img{
+    height: 80%;   
+}
+
 .parameterSelectorMain h4{
     margin: 0;
+    margin-top: 3vh;
 }
 
 .eggSize:after, .eggCookingInstructions:after{
@@ -135,6 +149,20 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     overflow-x: scroll;
     gap: 10vw;
     padding-left: 200px;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.eggSizeSlider::-webkit-scrollbar, .eggCookSlider::-webkit-scrollbar {
+    width: 8px;
+}
+
+.eggSizeSlider::-webkit-scrollbar-thumb, .eggCookSlider::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.eggSizeSlider::-webkit-scrollbar-track, .eggCookSlider::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
 .eggSizeSlider > div, .eggCookSlider > div{
@@ -184,15 +212,6 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     margin-right: 80px;
 }
 
-.cookingPotImg{
-    background-image: url(../images/pot3.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    margin-left: 3vh;
-    margin-right: 3vh;
-}
 
 /*Button*/
 .parameterSelectorMain .buttonNext,
@@ -207,6 +226,7 @@ nav .start-step3, a:nth-child(3):hover~.animation{
     font-family: var(--button-fontFamily);
     font-size: var(--buttons-fontSize);
     color: var(--white);
+    margin-top: 12vh;
 }
 
 .parameterSelectorMain .buttonNext:hover,
